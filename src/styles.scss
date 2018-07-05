@@ -1,0 +1,41 @@
+/* You can add global styles to this file, and also import other style files */
+
+$fa-font-path: "~font-awesome/fonts";
+@import '~font-awesome/scss/font-awesome.scss';
+
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700,900');
+
+/* BOOTSTRAP CSS */
+@import '~bootstrap/dist/css/bootstrap.min.css';
+
+
+html, body {
+  overflow-x: hidden;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+}
+
+button {
+  outline: none !important;
+}
+
+.setbtn {
+  background: none;
+  border: 1px solid #7A7A7A;
+  color: #7A7A7A;
+  border-radius: 15px;
+  margin-right: 5px;
+
+  &:hover {
+    color: white;
+    background: #145394;
+    border-radius: 15px;
+  }
+}
+
+
+.btn-primary {
+  background: #145394 !important;
+  color: #FFFFFF !important;
+  border-color: #145394 !important;
+}

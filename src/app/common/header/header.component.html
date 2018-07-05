@@ -1,0 +1,63 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+      <div class="header">
+        <!--<p>Hamare Netaji</p>-->
+        <img class="img-responsive" src="assets/Images/x-02.png" alt="Hamare Netaji kahen" style="width:50px; height:auto">
+
+      </div>
+    </div>
+    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" style="text-align: right;padding-top: 7px;">
+        <button type="button" class="btn  setbtn" data-toggle="modal" (click)="login()">Sign in </button>
+        <button type="button" class="btn  setbtn"  data-toggle="modal" (click)="register()">Sign up </button>
+    </div>
+  </div>
+</div>
+<!------------------------------------------------------------->
+<!------------------ Menu Area Begins-------------------------->
+<!------------------------------------------------------------->
+<!--<nav class="navbar navbar-dark">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav" >
+        <li><a>HOME</a></li>
+        <li><a>ANNIVERSARIES</a></li>
+        <li><a>HAMARE NETAJI KAHEN</a></li>
+        <li><a>UPCOMING ELECTIONS</a></li>
+        <li><a>DIRECTORY</a></li>
+        <li><a>ACHIVIES</a></li>
+      </ul>
+      <ul class="nav navbar-right">
+        <button type="button" class="btn  setbtn" data-toggle="modal" data-target="#loginModal">Sign in </button>
+        <button type="button" class="btn  setbtn"  data-toggle="modal" data-target="#loginModal">Sign up </button>
+      </ul>
+    </div>
+  </div>
+</nav>-->
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" (click)="isCollapsed = !isCollapsed">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent" [collapse]="isCollapsed">
+    <ul class="navbar-nav mr-auto">
+      <li><a routerLink="/home">HOME</a></li>
+      <li><a routerLink="/profile">PROFILE</a></li>
+      <li><a>ANNIVERSARIES</a></li>
+      <li><a>HAMARE NETAJI KAHEN</a></li>
+      <li><a>UPCOMING ELECTIONS</a></li>
+      <li><a>DIRECTORY</a></li>
+      <li><a>ACHIVIES</a></li>
+    </ul>
+   
+  </div>
+</nav>

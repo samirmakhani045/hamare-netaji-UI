@@ -1,0 +1,75 @@
+.banner {
+  height: 100vh;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: calc(100vh - 100px);
+  background: url("/assets/Images/banner.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+
+
+
+  .netaji-image {
+    width: 10vw;
+    min-width: 100px !important;
+  }
+
+  h1{
+    color: white;
+    font-size: 50px;
+  }
+}
+
+.jumbotron{
+  border:1px solid #C0C0C0;
+  background:white;
+}
+
+.thumbnail{
+  height:350px;
+  width:250px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+@media (max-width: 990px) {
+  .banner {
+    background-size: cover;
+    h1 {
+      font-size: 45px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .banner {
+    background-size: cover;
+    h1 {
+      font-size: 40px;
+    }
+  }
+}
+
+@media (max-width: 640px){
+  .banner {
+    background-size: cover;
+    h1 {
+      font-size: 40px;
+    }
+  }
+}
+
+
+@media (max-width: 480px){
+  .banner {
+    background-size: cover;
+    h1 {
+      font-size: 30px;
+    }
+  }
+}

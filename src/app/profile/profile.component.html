@@ -32,7 +32,7 @@
         <br>
         <br>
 
-        <button type="button" class="btn btn-default btn-lg" style="background:#145394 ; color:white">
+        <button type="button" class="btn btn-default btn-lg" (click)="openModal(template)" style="background:#145394 ; color:white">
           <span class="glyphicon glyphicon-star" aria-hidden="true" style="color:white"></span> Rate this Leader
         </button>
 
@@ -318,7 +318,7 @@
               </div>
               <div class="col-xs-3 col-md-2 col-lg-2 ">10 People</div>
               <div class="col-xs-4 col-md-2 col-lg-2 ">
-                <button type="button" class="btn btn-default btn-lg" style="background:#145394 ; color:white">
+                <button type="button" class="btn btn-default btn-lg" (click)="openModal(template)" style="background:#145394 ; color:white">
                   <span class="glyphicon glyphicon-star" aria-hidden="true" style="color:white"></span> Rate this Leader
                 </button>
               </div>
@@ -386,90 +386,98 @@
   </tabset>
 </div>
 
-<section class="edit-site">
-  <div class="container card">
-    <div class="row card-body">
-      <h6 class="page-header">Overall Rating</h6>
-    </div>
-    <div class="card-body" style="padding-left: 8%;padding-right: 8%">
-      <div class="row">
-        <div class="col-xs-2 col-md-4 col-lg-4">
-          <strong>Overall Rating</strong>
-        </div>
-        <div class="col-xs-8 col-md-6 col-lg-6 ">
-          <rating [max]="max" [readonly]="isReadonly"></rating>
-        </div>
-        <div class="col-xs-4 col-md-2 col-lg-2 ">
 
-          <span class="glyphicon glyphicon-star" aria-hidden="true" style="color:grey"></span> Clear
 
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-2 col-md-4 col-lg-4">
-          <strong>Personal Image</strong>
-        </div>
-        <div class="col-xs-8 col-md-6 col-lg-6 ">
-          <rating [max]="max" [readonly]="isReadonly"></rating>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-2 col-md-4 col-lg-4">
-          <strong>Party/Organisation Image</strong>
-        </div>
-        <div class="col-xs-8 col-md-6 col-lg-6 ">
-          <rating [max]="max" [readonly]="isReadonly"></rating>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-2 col-md-4 col-lg-4">
-          <strong>Qualification</strong>
-        </div>
-        <div class="col-xs-8 col-md-6 col-lg-6">
-          <rating [max]="max" [readonly]="isReadonly"></rating>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-2 col-md-4 col-lg-4">
-          <strong>Honesty</strong>
-        </div>
-        <div class="col-xs-8 col-md-6 col-lg-6">
-          <rating [max]="max" [readonly]="isReadonly"></rating>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-2 col-md-4 col-lg-4">
-          <strong>Accessibility</strong>
-        </div>
-        <div class="col-xs-8 col-md-6 col-lg-6">
-          <rating [max]="max" [readonly]="isReadonly"></rating>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-2 col-md-4 col-lg-4">
-          <strong>Work Performance</strong>
-        </div>
-        <div class="col-xs-8 col-md-6 col-lg-6">
-          <rating [max]="max" [readonly]="isReadonly"></rating>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-2 col-md-4 col-lg-4">
-          <strong>Transparency</strong>
-        </div>
-        <div class="col-xs-8 col-md-6 col-lg-6">
-          <rating [max]="max" [readonly]="isReadonly"></rating>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-8 col-md-10 col-lg-10"></div>
-        <div class="col-xs-4 col-md-2 col-lg-2 ">
+<button type="button" class="btn btn-primary" (click)="openModal(template)">Create template modal</button>
 
-          <button type="button" class="btn btn-default btn-lg" style="background:#145394 ; color:white">
-            <span class="glyphicon glyphicon-star" aria-hidden="true" style="color:white"></span> Submit
-          </button>
+<ng-template #template>
+  
+  <div class="modal-body">
+
+    <div class="container card" style="border: 0px">
+      <div class="row card-body">
+        <h6 class="page-header">Overall Rating</h6>
+      </div>
+      <div class="card-body" style="padding-left: 8%;padding-right: 8%">
+        <div class="row">
+          <div class="col-xs-2 col-md-4 col-lg-4">
+            <strong>Overall Rating</strong>
+          </div>
+          <div class="col-xs-8 col-md-6 col-lg-6 ">
+            <rating [max]="max" [readonly]="isReadonly"></rating>
+          </div>
+          <div class="col-xs-4 col-md-2 col-lg-2 ">
+
+            <span class="glyphicon glyphicon-star" aria-hidden="true" style="color:grey"></span> Clear
+
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-2 col-md-4 col-lg-4">
+            <strong>Personal Image</strong>
+          </div>
+          <div class="col-xs-8 col-md-6 col-lg-6 ">
+            <rating [max]="max" [readonly]="isReadonly"></rating>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-2 col-md-4 col-lg-4">
+            <strong>Party/Organisation Image</strong>
+          </div>
+          <div class="col-xs-8 col-md-6 col-lg-6 ">
+            <rating [max]="max" [readonly]="isReadonly"></rating>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-2 col-md-4 col-lg-4">
+            <strong>Qualification</strong>
+          </div>
+          <div class="col-xs-8 col-md-6 col-lg-6">
+            <rating [max]="max" [readonly]="isReadonly"></rating>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-2 col-md-4 col-lg-4">
+            <strong>Honesty</strong>
+          </div>
+          <div class="col-xs-8 col-md-6 col-lg-6">
+            <rating [max]="max" [readonly]="isReadonly"></rating>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-2 col-md-4 col-lg-4">
+            <strong>Accessibility</strong>
+          </div>
+          <div class="col-xs-8 col-md-6 col-lg-6">
+            <rating [max]="max" [readonly]="isReadonly"></rating>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-2 col-md-4 col-lg-4">
+            <strong>Work Performance</strong>
+          </div>
+          <div class="col-xs-8 col-md-6 col-lg-6">
+            <rating [max]="max" [readonly]="isReadonly"></rating>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-2 col-md-4 col-lg-4">
+            <strong>Transparency</strong>
+          </div>
+          <div class="col-xs-8 col-md-6 col-lg-6">
+            <rating [max]="max" [readonly]="isReadonly"></rating>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-8 col-md-10 col-lg-10"></div>
+          <div class="col-xs-4 col-md-2 col-lg-2 ">
+
+            <button type="button" class="btn btn-default btn-lg" style="background:#145394 ; color:white">
+              <span class="glyphicon glyphicon-star" aria-hidden="true" style="color:white"></span> Submit
+            </button>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</section>
+</ng-template>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RatingModule } from 'ngx-bootstrap/rating';
+import { BsModalService } from 'ngx-bootstrap/modal';
+
+ 
 
 @Component({
   selector: 'app-profile',
@@ -10,12 +11,14 @@ import { RatingModule } from 'ngx-bootstrap/rating';
 export class ProfileComponent implements OnInit {
   max: number = 5;
   isReadonly: boolean = true;
- 
-  constructor() {
+  modalRef: BsModalRef;
+  constructor(private modalService: BsModalService) {
 
   }
 
   ngOnInit() {
   }
-
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template);
+  }
 }

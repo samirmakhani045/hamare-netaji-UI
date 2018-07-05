@@ -8,10 +8,11 @@ import {routes} from './routes';
 import { HeaderComponent } from './common/header/header.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './common/login/login.component';
-import {CollapseModule, ModalModule,RatingModule} from 'ngx-bootstrap';
+import {CollapseModule, ModalModule,RatingModule,TabsModule} from 'ngx-bootstrap';
 import { RegisterComponent } from './common/register/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {HttpClientModule, HttpClient, HTTP_INTERCEPTORS} from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import {HttpClientModule, HttpClient, HTTP_INTERCEPTORS} from '@angular/common/h
     RatingModule.forRoot(),
     ModalModule.forRoot(),
     CollapseModule.forRoot(),
+    TabsModule.forRoot()
     FormsModule   
   ],
   providers: [],

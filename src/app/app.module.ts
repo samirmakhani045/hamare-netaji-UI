@@ -11,6 +11,7 @@ import { LoginComponent } from './common/login/login.component';
 import {CollapseModule, ModalModule,RatingModule} from 'ngx-bootstrap';
 import { RegisterComponent } from './common/register/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {HttpClientModule, HttpClient, HTTP_INTERCEPTORS} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -19,10 +20,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     HeaderComponent,
     HomeComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     RouterModule.forRoot(routes),
     RatingModule.forRoot(),
     ModalModule.forRoot(),

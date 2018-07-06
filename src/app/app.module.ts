@@ -31,7 +31,7 @@ import {HttpClientModule, HttpClient, HTTP_INTERCEPTORS} from '@angular/common/h
     RatingModule.forRoot(),
     ModalModule.forRoot(),
     CollapseModule.forRoot(),
-    TabsModule.forRoot()
+    TabsModule.forRoot(),
     FormsModule   
   ],
   providers: [],

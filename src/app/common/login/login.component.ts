@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BsModalRef } from 'ngx-bootstrap';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import {ToastrService} from 'ngx-toastr';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -38,11 +38,11 @@ export class LoginComponent implements OnInit {
     } else {
       const url = `http://139.162.53.4/netaji/oauth/token?client_id=finnov&client_secret=finnov&grant_type=password&password=${loginForm.value.password}&username=${loginForm.value.email}`;
       return this.http.get(url).subscribe(result => {
-      this.toastrService.success("Login Success","Login");
-      alert("Login Success");
+        window.localStorage.setItem('token', JSON.stringify({ result }));
+        this.toastrService.success("Login Success", "Login");
       }, error => {
         alert("Login fail");
-        this.toastrService.error('Login fail',"Login");
+        this.toastrService.error('Login fail', "Login");
       });
     }
   }

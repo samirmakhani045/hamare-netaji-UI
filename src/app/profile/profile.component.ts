@@ -3,7 +3,7 @@ import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
-import {ToastrService} from 'ngx-toastr';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-profile',
@@ -33,12 +33,7 @@ export class ProfileComponent implements OnInit {
   getProfile() {
     this.activatedRoute.params.subscribe((params) => {
       if (params['id']) {
-        let accessToken=JSON.parse(window.localStorage.getItem('token'));
-        let headers = new HttpHeaders({'Authorization': `Bearer ${accessToken["result"].access_token}`});
-        let options =  {
-          headers: headers,
-        };
-        this.httpClient.get(`http://139.162.53.4/netaji/admin/getProfiles?id=${params['id']}`,options)
+        this.httpClient.get(`http://139.162.53.4/netaji/admin/getProfiles?id=${params['id']}`)
           .subscribe((res) => {
             console.log(res);
             if (res && res['profiles'].length) {
@@ -49,7 +44,7 @@ export class ProfileComponent implements OnInit {
       }
     })
   }
-  test(){
-    this.toastrService.success("Login Success","Login");
+  test() {
+    this.toastrService.success("Login Success", "Login");
   }
 }

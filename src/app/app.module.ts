@@ -13,7 +13,7 @@ import { RegisterComponent } from './common/register/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
-
+import {InterceptorService} from './core/config/interceptor.service';
 
 @NgModule({
   declarations: [
@@ -38,7 +38,13 @@ import { ToastrModule } from 'ngx-toastr';
     ReactiveFormsModule,
     ToastrModule.forRoot()
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: InterceptorService,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent],
   entryComponents: [
     LoginComponent,

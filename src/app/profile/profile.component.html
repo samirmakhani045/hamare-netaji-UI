@@ -151,61 +151,61 @@
               <div class="col-xs-2 col-md-4 col-lg-2">
                 <strong>State/UT</strong>
               </div>
-              <div class="col-xs-8 col-md-8 col-lg-10 ">sam@gmail.com</div>
+              <div class="col-xs-8 col-md-8 col-lg-10 ">{{ profiledetails.state}}</div>
             </div>
             <div class="row">
               <div class="col-xs-2 col-md-4 col-lg-2">
                 <strong>Date Of Birth</strong>
               </div>
-              <div class="col-xs-8 col-md-8 col-lg-10 ">8-1-1994</div>
+              <div class="col-xs-8 col-md-8 col-lg-10 ">{{ profiledetails.dob |  date:'MM/dd/yyyy' }}</div>
             </div>
             <div class="row">
               <div class="col-xs-2 col-md-4 col-lg-2">
                 <strong>Qualification</strong>
               </div>
-              <div class="col-xs-8 col-md-8 col-lg-10 ">B.SC.LLB</div>
+              <div class="col-xs-8 col-md-8 col-lg-10 ">{{ profiledetails.qualifications}}</div>
             </div>
             <div class="row">
               <div class="col-xs-2 col-md-4 col-lg-2">
                 <strong>Occupation</strong>
               </div>
-              <div class="col-xs-8 col-md-8 col-lg-10 ">Advocate</div>
+              <div class="col-xs-8 col-md-8 col-lg-10 ">{{ profiledetails.occupation}}</div>
             </div>
             <div class="row">
               <div class="col-xs-2 col-md-4 col-lg-2">
                 <strong>Permanent Address</strong>
               </div>
-              <div class="col-xs-8 col-md-8 col-lg-10 ">2,Shreeji Nagar Riya roadr,Rajkot</div>
+              <div class="col-xs-8 col-md-8 col-lg-10 ">{{ profiledetails.permanentAddressLandLine}}</div>
             </div>
             <div class="row">
               <div class="col-xs-2 col-md-4 col-lg-2">
                 <strong>Landline NO.</strong>
               </div>
-              <div class="col-xs-8 col-md-8 col-lg-10 ">4656564</div>
+              <div class="col-xs-8 col-md-8 col-lg-10 ">{{ profiledetails.presentLandLine}}</div>
             </div>
             <div class="row">
               <div class="col-xs-2 col-md-4 col-lg-2">
                 <strong>FAX NO.</strong>
               </div>
-              <div class="col-xs-8 col-md-8 col-lg-10 ">4656564</div>
+              <div class="col-xs-8 col-md-8 col-lg-10 ">{{ profiledetails.faxNo}}</div>
             </div>
             <div class="row">
               <div class="col-xs-2 col-md-4 col-lg-2">
                 <strong>Mobile NO.</strong>
               </div>
-              <div class="col-xs-8 col-md-8 col-lg-10 ">4656564</div>
+              <div class="col-xs-8 col-md-8 col-lg-10 ">{{ profiledetails.mobileNo}}</div>
             </div>
             <div class="row">
               <div class="col-xs-2 col-md-4 col-lg-2">
                 <strong>Email Id</strong>
               </div>
-              <div class="col-xs-8 col-md-8 col-lg-10 ">sam@g.c</div>
+              <div class="col-xs-8 col-md-8 col-lg-10 ">{{ profiledetails.email}}</div>
             </div>
             <div class="row">
               <div class="col-xs-2 col-md-4 col-lg-2">
                 <strong>Website</strong>
               </div>
-              <div class="col-xs-8 col-md-8 col-lg-10 ">Facebook.com</div>
+              <div class="col-xs-8 col-md-8 col-lg-10 ">{{ profiledetails.website}}</div>
             </div>
             <div class="row">
               <div class="col-xs-2 col-md-4 col-lg-2">
@@ -213,10 +213,10 @@
               </div>
               <div class="col-xs-8 col-md-8 col-lg-10 ">
                 <span class="count-badge">
-                  <a href="#" class="fa fa-facebook" style="color: white;"></a>
+                  <a href="{{profiledetails.facebookLink}}" class="fa fa-facebook" style="color: white;"></a>
                 </span>
                 <span class="count-badge">
-                  <a href="#" class="fa fa-twitter" style="color: white;"></a>
+                  <a href="{{profiledetails.twitterLink}}" class="fa fa-twitter" style="color: white;"></a>
                 </span>
               </div>
             </div>
@@ -238,61 +238,61 @@
               <div class="col-xs-2 col-md-4 col-lg-2">
                 <strong>Marital Status</strong>
               </div>
-              <div class="col-xs-8 col-md-8 col-lg-10 ">sam@gmail.com</div>
+              <div class="col-xs-8 col-md-8 col-lg-10 ">{{profiledetails.maritalStatus}}</div>
             </div>
             <div class="row">
               <div class="col-xs-2 col-md-4 col-lg-2">
                 <strong> Date Of Marriage</strong>
               </div>
-              <div class="col-xs-8 col-md-8 col-lg-10 ">8-1-1994</div>
+              <div class="col-xs-8 col-md-8 col-lg-10 ">{{profiledetails.dob |  date:'MM/dd/yyyy' }}</div>
             </div>
             <div class="row">
               <div class="col-xs-2 col-md-4 col-lg-2">
                 <strong>Spouse's Name</strong>
               </div>
-              <div class="col-xs-8 col-md-8 col-lg-10 ">Soonnam</div>
+              <div class="col-xs-8 col-md-8 col-lg-10 ">{{profiledetails.spouseName}}</div>
             </div>
             <div class="row">
               <div class="col-xs-2 col-md-4 col-lg-2">
                 <strong>Father's Name</strong>
               </div>
-              <div class="col-xs-8 col-md-8 col-lg-10 ">Anile</div>
+              <div class="col-xs-8 col-md-8 col-lg-10 ">{{profiledetails.fatherName}}</div>
             </div>
             <div class="row">
               <div class="col-xs-2 col-md-4 col-lg-2">
                 <strong>Mother's Name</strong>
               </div>
-              <div class="col-xs-8 col-md-8 col-lg-10 ">Karinal khan</div>
+              <div class="col-xs-8 col-md-8 col-lg-10 ">{{profiledetails.motherName}}</div>
             </div>
             <div class="row">
               <div class="col-xs-2 col-md-4 col-lg-2">
                 <strong>No. Of Children</strong>
               </div>
-              <div class="col-xs-8 col-md-8 col-lg-10 ">4</div>
+              <div class="col-xs-8 col-md-8 col-lg-10 ">{{profiledetails.fatherName}}</div>
             </div>
             <div class="row">
               <div class="col-xs-2 col-md-4 col-lg-2">
                 <strong>No. Of Criminal Cases</strong>
               </div>
-              <div class="col-xs-8 col-md-8 col-lg-10 ">4</div>
+              <div class="col-xs-8 col-md-8 col-lg-10 ">{{profiledetails.noOfCriminalCases}}</div>
             </div>
             <div class="row">
               <div class="col-xs-2 col-md-4 col-lg-2">
                 <strong>Special Interests</strong>
               </div>
-              <div class="col-xs-8 col-md-8 col-lg-10 ">Music,Riding,Bollywood</div>
+              <div class="col-xs-8 col-md-8 col-lg-10 ">{{profiledetails.specialInterests}}</div>
             </div>
             <div class="row">
               <div class="col-xs-2 col-md-4 col-lg-2">
                 <strong>Countries Visited</strong>
               </div>
-              <div class="col-xs-8 col-md-8 col-lg-10 ">INd,PAK,USA,CANADA</div>
+              <div class="col-xs-8 col-md-8 col-lg-10 ">{{profiledetails.countriesVisted}}</div>
             </div>
             <div class="row">
               <div class="col-xs-2 col-md-4 col-lg-2">
                 <strong>Social & Cultural Activities</strong>
               </div>
-              <div class="col-xs-8 col-md-8 col-lg-10 ">Facebook.com</div>
+              <div class="col-xs-8 col-md-8 col-lg-10 ">{{profiledetails.socialAndCulturalActivities}}</div>
             </div>
           </div>
         </div>

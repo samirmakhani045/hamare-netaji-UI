@@ -14,6 +14,7 @@ import { AuthService } from '../../core/service/auth.service';
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   loading: boolean = false;
+  loginFail:boolean=false;
   constructor(
     public bsModalRef: BsModalRef,
     private http: HttpClient,
@@ -47,6 +48,7 @@ export class LoginComponent implements OnInit {
         this.authService.setLoginStatus(true);
       }, error => {
         this.loading = false;
+        this.loginFail=true;
       });
     }
   }

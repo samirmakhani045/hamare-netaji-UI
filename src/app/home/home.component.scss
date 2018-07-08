@@ -94,6 +94,8 @@
 .interview{
   min-width: 100%;
   background: #F3F3F3;
+  padding-top: 20px !important;
+  padding-bottom: 0px;
   .setlayout{
     padding-left: 4%;padding-right: 4%;
     .statement{
@@ -106,4 +108,11 @@
   padding-left: 15px;
   padding-right: 15px;
   text-align: center;
+}
+.advertisment{
+  height: 192px;
+  width:95%
+}
+.removerMargin{
+  margin-top: 0px !important; 
 }

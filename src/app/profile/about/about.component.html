@@ -1,0 +1,84 @@
+<div class="p-4">
+<div class="row">
+    <div>
+      <h6 class="page-header">ABOUT</h6>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-2 col-md-4 col-lg-3">
+      <strong>State/UT</strong>
+    </div>
+    <div class="col-xs-8 col-md-8 col-lg-9 ">{{ profiledetails.state || 'N/A'}}</div>
+  </div>
+  <div class="row">
+    <div class="col-xs-2 col-md-4 col-lg-3">
+      <strong>Date Of Birth</strong>
+    </div>
+    <div class="col-xs-8 col-md-8 col-lg-9 ">{{ profiledetails.dob |  date:'MM/dd/yyyy' }}</div>
+  </div>
+  <div class="row">
+    <div class="col-xs-2 col-md-4 col-lg-3">
+      <strong>Qualification</strong>
+    </div>
+    <div class="col-xs-8 col-md-8 col-lg-9 ">{{ profiledetails.qualifications || 'N/A'}}</div>
+  </div>
+  <div class="row">
+    <div class="col-xs-2 col-md-4 col-lg-3">
+      <strong>Occupation</strong>
+    </div>
+    <div class="col-xs-8 col-md-8 col-lg-9 ">{{ profiledetails.occupation || 'N/A'}}</div>
+  </div>
+  <div class="row">
+    <div class="col-xs-2 col-md-4 col-lg-3">
+      <strong>Permanent Address</strong>
+    </div>
+    <div class="col-xs-8 col-md-8 col-lg-9 ">{{ profiledetails.permanentAddressLandLine || 'N/A'}}</div>
+  </div>
+  <div class="row">
+    <div class="col-xs-2 col-md-4 col-lg-3">
+      <strong>Landline NO.</strong>
+    </div>
+    <div class="col-xs-8 col-md-8 col-lg-9 ">{{ profiledetails.presentLandLine || 'N/A'}}</div>
+  </div>
+  <div class="row">
+    <div class="col-xs-2 col-md-4 col-lg-3">
+      <strong>FAX NO.</strong>
+    </div>
+    <div class="col-xs-8 col-md-8 col-lg-9 ">{{ profiledetails.faxNo || 'N/A'}}</div>
+  </div>
+  <div class="row">
+    <div class="col-xs-2 col-md-4 col-lg-3">
+      <strong>Mobile NO.</strong>
+    </div>
+    <div class="col-xs-8 col-md-8 col-lg-9 ">{{ profiledetails.mobileNo || 'N/A'}}</div>
+  </div>
+  <div class="row">
+    <div class="col-xs-2 col-md-4 col-lg-3">
+      <strong>Email Id</strong>
+    </div>
+    <div class="col-xs-8 col-md-8 col-lg-9 ">{{ profiledetails.email || 'N/A'}}</div>
+  </div>
+  <div class="row">
+    <div class="col-xs-2 col-md-4 col-lg-3">
+      <strong>Website</strong>
+    </div>
+    <div class="col-xs-8 col-md-8 col-lg-9 ">{{ profiledetails.website || 'N/A'}}</div>
+  </div>
+  <div class="row">
+    <div class="col-xs-2 col-md-4 col-lg-3">
+      <strong>Follow</strong>
+    </div>
+    <div class="col-xs-8 col-md-8 col-lg-9 ">
+      <span class="count-badge mr-4" style="display: inline-block" *ngIf="profiledetails.facebookLink">
+        <a href="{{profiledetails.facebookLink}}" style="color: #ffffff">
+          <i class="fa fa-facebook"></i>
+        </a>
+      </span>
+      <span class="count-badge" style="display: inline-block" *ngIf="profiledetails.twitterLink">
+        <a href="{{profiledetails.twitterLink}}" style="color: #ffffff">
+            <i class="fa fa-twitter"></i>
+        </a>
+      </span>
+    </div>
+  </div>
+</div>

@@ -11,24 +11,34 @@
     </div>
     <div class="row" style="background:#F3F3F3">
       <div class="col-md-3">
-        <img class="img-responsive img-circle" width="160px" height="160px" alt="Mr Narendra Modi" src="assets/Images/x-02.png" style="margin:0 auto">
-        <br>
+        <img class="img-responsive img-circle" width="160px" height="160px" alt="Leader image" src="assets/Images/x-02.png" style="margin:0 auto">
+
         <div class="vote">
-          <button type="button" class="btn btn-default btn-lg btn-disabled" style="background:white; color:#5C5C5C;">
+          <span style="display: inline-block;background: #FFFFFF;padding: 5px 10px;margin-left: 10px;">
+            <button class="btn-like">
+              <i class="fa fa-thumbs-up"></i>
+            </button>
+            <span style="display: inline-block; padding: 5px 10px;">0</span>
+            <button class="btn-dislike">
+              <i class="fa fa-thumbs-down"></i>
+            </button>
+            <span style="display: inline-block; padding: 5px 10px;">0</span>
+          </span>
+          <!--<button type="button" class="btn btn-default btn-lg btn-disabled" style="background:white; color:#5C5C5C;">
             <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true" style="color:#278274"></span> 0
           </button>
 
           <button type="button" class="btn btn-default btn-lg btn-disabled" style="background:white; color:#5C5C5C;">
             <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true" style="color:#C2202A"></span> 0
-          </button>
+          </button>-->
         </div>
       </div>
       <div class="col-md-9 col-lg-9 intro">
-        <h1 style="color: #5C5C5C; font-size:32px">Mr Narendra Modi</h1>
+        <h1 style="color: #5C5C5C; font-size:32px">{{ profiledetails.sal}} {{profiledetails.firstName}} {{profiledetails.middleName}} {{profiledetails.lastName}}</h1>
         <h3 style="color: #5C5C5C; font-size:18px">
-          <strong>Prime Minister of India</strong>
+          <strong>{{profiledetails.position || 'N/A'}}</strong>
         </h3>
-        <h3 style="color: #5C5C5C; font-size:18px; line-height:3px">Bahujan Samaj Party(BJP)</h3>
+        <h3 style="color: #5C5C5C; font-size:18px; line-height:3px">{{profiledetails.organisation || 'N/A'}}</h3>
         <br>
         <br>
 
@@ -44,7 +54,135 @@
     </div>
   </div>
 </section>
-<div class="container">
+
+<div class="container mt-4" style="padding: 0;">
+  <div class="row">
+    <div class="col-md-5">
+        <ul class="nav" style="background:#F3F3F3;">
+            <li class="nav-item">
+              <a class="active nav-link" (click)="selectSection('update')">UPDATE</a>
+            </li>
+            <li class="nav-item">
+              <a class="active nav-link" (click)="selectSection('about')">ABOUT</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" (click)="selectSection('personal')">PERSONAL</a>
+            </li>
+            <li class="nav-item">
+              <a  class="nav-link" (click)="selectSection('work')">WORK</a>
+            </li>
+            <li class="nav-item">
+              <a  class="nav-link" (click)="selectSection('rating')">RATING</a>
+            </li>
+          </ul>
+    </div>
+  </div>
+</div>
+
+<div class="full-width mt-4 pt-4 pb-4" style="background:#F3F3F3;">
+  <div class="container" style="background: #ffffff">
+    <app-update *ngIf="selectedSection == 'update'" [profiledetails]="profiledetails"></app-update>
+    <app-about *ngIf="selectedSection == 'about'" [profiledetails]="profiledetails"></app-about>
+    <app-personal *ngIf="selectedSection == 'personal'" [profiledetails]="profiledetails"></app-personal>
+    <app-work *ngIf="selectedSection == 'work'" [profiledetails]="profiledetails"></app-work>
+    <app-rating *ngIf="selectedSection == 'rating'" [profiledetails]="profiledetails"></app-rating>
+  </div>
+</div>
+
+
+<ng-template #template>
+
+  <div class="modal-body">
+
+    <div class="container card" style="border: 0px">
+      <div class="row card-body">
+        <h6 class="page-header">Overall Rating</h6>
+      </div>
+      <div class="card-body" style="padding-left: 8%;padding-right: 8%">
+        <div class="row">
+          <div class="col-xs-2 col-md-4 col-lg-4">
+            <strong>Overall Rating</strong>
+          </div>
+          <div class="col-xs-8 col-md-6 col-lg-6 ">
+            <rating [max]="max" [readonly]="isReadonly"></rating>
+          </div>
+          <div class="col-xs-4 col-md-2 col-lg-2 ">
+
+            <span class="glyphicon glyphicon-star" aria-hidden="true" style="color:grey"></span> Clear
+
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-2 col-md-4 col-lg-4">
+            <strong>Personal Image</strong>
+          </div>
+          <div class="col-xs-8 col-md-6 col-lg-6 ">
+            <rating [max]="max" [readonly]="isReadonly"></rating>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-2 col-md-4 col-lg-4">
+            <strong>Party/Organisation Image</strong>
+          </div>
+          <div class="col-xs-8 col-md-6 col-lg-6 ">
+            <rating [max]="max" [readonly]="isReadonly"></rating>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-2 col-md-4 col-lg-4">
+            <strong>Qualification</strong>
+          </div>
+          <div class="col-xs-8 col-md-6 col-lg-6">
+            <rating [max]="max" [readonly]="isReadonly"></rating>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-2 col-md-4 col-lg-4">
+            <strong>Honesty</strong>
+          </div>
+          <div class="col-xs-8 col-md-6 col-lg-6">
+            <rating [max]="max" [readonly]="isReadonly"></rating>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-2 col-md-4 col-lg-4">
+            <strong>Accessibility</strong>
+          </div>
+          <div class="col-xs-8 col-md-6 col-lg-6">
+            <rating [max]="max" [readonly]="isReadonly"></rating>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-2 col-md-4 col-lg-4">
+            <strong>Work Performance</strong>
+          </div>
+          <div class="col-xs-8 col-md-6 col-lg-6">
+            <rating [max]="max" [readonly]="isReadonly"></rating>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-2 col-md-4 col-lg-4">
+            <strong>Transparency</strong>
+          </div>
+          <div class="col-xs-8 col-md-6 col-lg-6">
+            <rating [max]="max" [readonly]="isReadonly"></rating>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-8 col-md-10 col-lg-10"></div>
+          <div class="col-xs-4 col-md-2 col-lg-2 ">
+
+            <button type="button" class="btn btn-default btn-lg" style="background:#145394 ; color:white">
+              <span class="glyphicon glyphicon-star" aria-hidden="true" style="color:white"></span> Submit
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<!-- <div class="container">
   <div class="row">
     <div class="col-xs-8 col-sm-8 col-md-6 col-lg-5">
       <nav class="navbar profile">
@@ -76,37 +214,9 @@
 
     </div>
   </div>
-</div>
-<div class="btn-group" dropdown>
-  <button id="button-basic" dropdownToggle type="button" class="btn btn-primary dropdown-toggle" aria-controls="dropdown-basic">
-    Button dropdown
-    <span class="caret"></span>
-  </button>
-  <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-basic">
-    <li role="menuitem">
-      <a class="dropdown-item" href="#">Action</a>
-    </li>
-    <li role="menuitem">
-      <a class="dropdown-item" href="#">Another action</a>
-    </li>
-    <li role="menuitem">
-      <a class="dropdown-item" href="#">Something else here</a>
-    </li>
-    <li class="divider dropdown-divider"></li>
-    <li role="menuitem">
-      <a class="dropdown-item" href="#">Separated link</a>
-    </li>
-  </ul>
-</div>
+</div> -->
 
-
-
-
-
-
-
-
-<div>
+<!-- <div>
 
   <tabset #staticTabs>
     <tab heading="UPDATES">
@@ -385,95 +495,4 @@
     </tab>
   </tabset>
 </div>
-
-<ng-template #template>
-
-  <div class="modal-body">
-
-    <div class="container card" style="border: 0px">
-      <div class="row card-body">
-        <h6 class="page-header">Overall Rating</h6>
-      </div>
-      <div class="card-body" style="padding-left: 8%;padding-right: 8%">
-        <div class="row">
-          <div class="col-xs-2 col-md-4 col-lg-4">
-            <strong>Overall Rating</strong>
-          </div>
-          <div class="col-xs-8 col-md-6 col-lg-6 ">
-            <rating [max]="max" [readonly]="isReadonly"></rating>
-          </div>
-          <div class="col-xs-4 col-md-2 col-lg-2 ">
-
-            <span class="glyphicon glyphicon-star" aria-hidden="true" style="color:grey"></span> Clear
-
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-xs-2 col-md-4 col-lg-4">
-            <strong>Personal Image</strong>
-          </div>
-          <div class="col-xs-8 col-md-6 col-lg-6 ">
-            <rating [max]="max" [readonly]="isReadonly"></rating>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-xs-2 col-md-4 col-lg-4">
-            <strong>Party/Organisation Image</strong>
-          </div>
-          <div class="col-xs-8 col-md-6 col-lg-6 ">
-            <rating [max]="max" [readonly]="isReadonly"></rating>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-xs-2 col-md-4 col-lg-4">
-            <strong>Qualification</strong>
-          </div>
-          <div class="col-xs-8 col-md-6 col-lg-6">
-            <rating [max]="max" [readonly]="isReadonly"></rating>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-xs-2 col-md-4 col-lg-4">
-            <strong>Honesty</strong>
-          </div>
-          <div class="col-xs-8 col-md-6 col-lg-6">
-            <rating [max]="max" [readonly]="isReadonly"></rating>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-xs-2 col-md-4 col-lg-4">
-            <strong>Accessibility</strong>
-          </div>
-          <div class="col-xs-8 col-md-6 col-lg-6">
-            <rating [max]="max" [readonly]="isReadonly"></rating>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-xs-2 col-md-4 col-lg-4">
-            <strong>Work Performance</strong>
-          </div>
-          <div class="col-xs-8 col-md-6 col-lg-6">
-            <rating [max]="max" [readonly]="isReadonly"></rating>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-xs-2 col-md-4 col-lg-4">
-            <strong>Transparency</strong>
-          </div>
-          <div class="col-xs-8 col-md-6 col-lg-6">
-            <rating [max]="max" [readonly]="isReadonly"></rating>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-xs-8 col-md-10 col-lg-10"></div>
-          <div class="col-xs-4 col-md-2 col-lg-2 ">
-
-            <button type="button" class="btn btn-default btn-lg" style="background:#145394 ; color:white">
-              <span class="glyphicon glyphicon-star" aria-hidden="true" style="color:white"></span> Submit
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</ng-template>
+ -->

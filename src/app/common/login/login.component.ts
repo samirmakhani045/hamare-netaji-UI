@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { BsModalRef } from 'ngx-bootstrap';
+import { BsModalRef ,BsModalService} from 'ngx-bootstrap';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
+import { AuthService } from '../../core/service/auth.service';
 
 
 @Component({
@@ -12,11 +13,13 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
+  loading: boolean = false;
   constructor(
     public bsModalRef: BsModalRef,
     private http: HttpClient,
     private formBuilder: FormBuilder,
-    private toastrService: ToastrService
+    private modalService: BsModalService,
+    private authService: AuthService
   ) { }
 
   ngOnInit() {
@@ -34,15 +37,16 @@ export class LoginComponent implements OnInit {
         const control = loginForm.get(field);
         control.markAsTouched({ onlySelf: true });
       })
-      alert("Please enter some valid value");
     } else {
+      this.loading = true;
       const url = `http://139.162.53.4/netaji/oauth/token?client_id=finnov&client_secret=finnov&grant_type=password&password=${loginForm.value.password}&username=${loginForm.value.email}`;
       return this.http.get(url).subscribe(result => {
         window.localStorage.setItem('token', JSON.stringify({ result }));
-        this.toastrService.success("Login Success", "Login");
+        this.modalService.hide(1);
+        this.loading = false;
+        this.authService.setLoginStatus(true);
       }, error => {
-        alert("Login fail");
-        this.toastrService.error('Login fail', "Login");
+        this.loading = false;
       });
     }
   }

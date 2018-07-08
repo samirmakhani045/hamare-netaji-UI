@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {BsModalRef, BsModalService} from 'ngx-bootstrap';
-import {LoginComponent} from '../login/login.component';
-import {RegisterComponent} from '../register/register.component';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap';
+import { LoginComponent } from '../login/login.component';
+import { RegisterComponent } from '../register/register.component';
+import { Subscription } from 'rxjs';
+import { AuthService } from '../../core/service/auth.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -11,10 +14,15 @@ import {RegisterComponent} from '../register/register.component';
 export class HeaderComponent implements OnInit {
   isCollapsed = true;
   bsModalRef: BsModalRef;
-
+  message: any;
+  subscription: Subscription;
   constructor(
-    private modalService: BsModalService
-  ) { }
+    private modalService: BsModalService,
+    private authService: AuthService,
+    private router: Router,
+  ) {
+    this.subscription = this.authService.getLoginStatus().subscribe(message => { this.message = message; });
+  }
 
   login() {
     this.bsModalRef = this.modalService.show(LoginComponent, /*{class: 'modal-lg'}*/);
@@ -24,7 +32,17 @@ export class HeaderComponent implements OnInit {
     this.bsModalRef = this.modalService.show(RegisterComponent);
   }
 
+  ngOnDestroy() {
+    // unsubscribe to ensure no memory leaks
+    this.subscription.unsubscribe();
+  }
+  logout() {
+    this.authService.setLoginStatus(false);
+    this.router.navigate(['/home']);
+  }
   ngOnInit() {
+    this.message = this.authService.getLoginStatus();
+      console.log(this.message);
   }
 
 }

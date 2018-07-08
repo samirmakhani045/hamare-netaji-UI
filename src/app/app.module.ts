@@ -14,6 +14,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import {InterceptorService} from './core/config/interceptor.service';
+import { AuthGuard } from './core/config/auth.guard';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import {InterceptorService} from './core/config/interceptor.service';
       provide: HTTP_INTERCEPTORS,
       useClass: InterceptorService,
       multi: true
-    }
+    },
+    AuthGuard,
   ],
   bootstrap: [AppComponent],
   entryComponents: [

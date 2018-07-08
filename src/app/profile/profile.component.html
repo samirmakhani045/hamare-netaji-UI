@@ -4,7 +4,7 @@
     <div class="row" style="background:#F3F3F3;">
       <div class="col-xs-offset-10 col-sm-offset-10 col-md-offset-10 col-lg-offset-10 col-xs-12 col-sm-12 col-md-12 col-lg-12"
         style="padding-right: 0px;">
-        <button type="button" class="btn btn-default  btn-disabled pull-right" style="background:#278274; color:white;">
+        <button type="button" class="btn btn-default  btn-disabled pull-right rateButton" >
           <span class="glyphicon glyphicon-star" aria-hidden="true" style="color:white"></span> 4.1/5
         </button>
       </div>
@@ -14,15 +14,15 @@
         <img class="img-responsive img-circle" width="160px" height="160px" alt="Leader image" src="assets/Images/x-02.png" style="margin:0 auto">
 
         <div class="vote">
-          <span style="display: inline-block;background: #FFFFFF;padding: 5px 10px;margin-left: 10px;">
+          <span class="highlight">
             <button class="btn-like">
               <i class="fa fa-thumbs-up"></i>
             </button>
-            <span style="display: inline-block; padding: 5px 10px;">0</span>
+            <span class="dislike">0</span>
             <button class="btn-dislike">
               <i class="fa fa-thumbs-down"></i>
             </button>
-            <span style="display: inline-block; padding: 5px 10px;">0</span>
+            <span class="dislike" >0</span>
           </span>
           <!--<button type="button" class="btn btn-default btn-lg btn-disabled" style="background:white; color:#5C5C5C;">
             <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true" style="color:#278274"></span> 0
@@ -34,8 +34,8 @@
         </div>
       </div>
       <div class="col-md-9 col-lg-9 intro">
-        <h1 style="color: #5C5C5C; font-size:32px">{{ profiledetails.sal}} {{profiledetails.firstName}} {{profiledetails.middleName}} {{profiledetails.lastName}}</h1>
-        <h3 style="color: #5C5C5C; font-size:18px">
+        <h1 class="introMainHeader" >{{ profiledetails.sal}} {{profiledetails.firstName}} {{profiledetails.middleName}} {{profiledetails.lastName}}</h1>
+        <h3 class="introMainTitle">
           <strong>{{profiledetails.position || 'N/A'}}</strong>
         </h3>
         <h3 style="color: #5C5C5C; font-size:18px; line-height:3px">{{profiledetails.organisation || 'N/A'}}</h3>
@@ -172,7 +172,7 @@
           <div class="col-xs-8 col-md-10 col-lg-10"></div>
           <div class="col-xs-4 col-md-2 col-lg-2 ">
 
-            <button type="button" class="btn btn-default btn-lg" style="background:#145394 ; color:white">
+            <button type="button" class="btn btn-default btn-lg rateButton" >
               <span class="glyphicon glyphicon-star" aria-hidden="true" style="color:white"></span> Submit
             </button>
           </div>

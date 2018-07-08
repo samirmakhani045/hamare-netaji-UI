@@ -41,7 +41,12 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['/home']);
   }
   ngOnInit() {
-    this.message = this.authService.getLoginStatus();
+    const authToken = JSON.parse(window.localStorage.getItem('token'));
+    if (authToken != null &&  authToken['result']['access_token']) {
+        // logged in so return true
+        this.authService.setLoginStatus(true);
+    }
+    
       console.log(this.message);
   }
 

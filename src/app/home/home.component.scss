@@ -73,3 +73,37 @@
     }
   }
 }
+.heading{
+  font-size:15px; 
+  text-decoration:none;
+   font-weight:400
+}
+.title{
+  font-size:15px; 
+  text-decoration:none ;
+  font-weight:600
+}
+.name{
+  font-size:20px; 
+  text-decoration:none
+}
+.paddingRemove{
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.interview{
+  min-width: 100%;
+  background: #F3F3F3;
+  .setlayout{
+    padding-left: 4%;padding-right: 4%;
+    .statement{
+      float: right;
+      margin-bottom: 15px;
+    }
+  }
+}
+.tileLayout{
+  padding-left: 15px;
+  padding-right: 15px;
+  text-align: center;
+}

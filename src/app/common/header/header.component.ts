@@ -37,6 +37,7 @@ export class HeaderComponent implements OnInit {
     this.subscription.unsubscribe();
   }
   logout() {
+    localStorage.removeItem('token');
     this.authService.setLoginStatus(false);
     this.router.navigate(['/home']);
   }
@@ -45,6 +46,8 @@ export class HeaderComponent implements OnInit {
     if (authToken != null &&  authToken['result']['access_token']) {
         // logged in so return true
         this.authService.setLoginStatus(true);
+    }else{
+      this.authService.setLoginStatus(false);
     }
     
       console.log(this.message);

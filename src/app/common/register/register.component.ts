@@ -13,6 +13,7 @@ import { ToastrService } from 'ngx-toastr';
 export class RegisterComponent implements OnInit {
   RegisterForm: FormGroup;
   signing: boolean = false;
+  signinFail:boolean=false;
   constructor(public bsModalRef: BsModalRef,
     private http: HttpClient,
     private formBuilder: FormBuilder,
@@ -28,7 +29,7 @@ export class RegisterComponent implements OnInit {
       sal: ['Mr.', Validators.required],
       name: [null, Validators.required],
       email: [null, Validators.compose([Validators.required, Validators.pattern('[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}')])],
-      mobileNo: [null, Validators.compose([Validators.required, Validators.pattern('^((\\+91-?)|0)?[0-9]{10}$')])],
+      mobile: [null, Validators.compose([Validators.required, Validators.pattern('^((\\+91-?)|0)?[0-9]{10}$')])],
       password: [null, Validators.required]
     });
   }
@@ -40,8 +41,16 @@ export class RegisterComponent implements OnInit {
       })
     } else {
       this.signing = true;
-      console.log(RegisterForm.value);
-      this.modalService.hide(1);
+      let options =  { };
+      this.http.post('http://139.162.53.4/netaji/client/account/create', RegisterForm.value,options)
+        .subscribe((res) => {
+          this.signing = false;
+          this.modalService.hide(1);
+        }, err => {
+          this.signing = false;
+          this.signinFail = true;
+        });
+
     }
   }
 }

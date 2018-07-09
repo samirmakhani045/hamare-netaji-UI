@@ -1,9 +1,18 @@
 <div class="modal-body">
-  <h3 class="modal-title text-center" style="color: #7A7A7A; margin-bottom: 30px;"><strong>Register to Hamare Netaji</strong></h3>
+  <div style="text-align: center">
+    <!--<p>Hamare Netaji</p>-->
+    <img class="img-responsive" src="assets/Images/x-02.png" alt="Hamare Netaji kahen" style="width:50px; height:auto">
+
+  </div>
+  <h3 class="modal-title text-center" style="color: #7A7A7A; margin-bottom: 30px;">
+    <strong>SIGN UP to Hamare Netaji</strong>
+  </h3>
   <form [formGroup]="RegisterForm" method="post">
     <div class="form-group row">
-      <label for="email" class="col-sm-2 control-label"><strong>Name</strong></label>
-      <div class="col-sm-10">
+      <label for="email" class="col-sm-3 control-label">
+        <strong>Full Name</strong>
+      </label>
+      <div class="col-sm-9">
         <div class="row">
           <div class="col-md-3">
             <select class="form-control" formControlName="sal">
@@ -17,40 +26,46 @@
           </div>
         </div>
         <label class="alertLable" *ngIf="RegisterForm.controls['sal'].touched">
-            <span *ngIf="RegisterForm.controls['sal'].hasError('required')">Please select your Salutation </span>
-          </label>
+          <span *ngIf="RegisterForm.controls['sal'].hasError('required')">Please select your Salutation </span>
+        </label>
         <label class="alertLable" *ngIf="RegisterForm.controls['name'].touched">
-              <span *ngIf="RegisterForm.controls['name'].hasError('required')">Please input your Name</span>
-             </label>
+          <span *ngIf="RegisterForm.controls['name'].hasError('required')">Please input your Name</span>
+        </label>
       </div>
     </div>
     <div class="form-group row">
-      <label for="email" class="col-sm-2 control-label"><strong>Email</strong></label>
-      <div class="col-sm-10">
+      <label for="email" class="col-sm-3 control-label">
+        <strong>Email</strong>
+      </label>
+      <div class="col-sm-9">
         <input type="email" class="form-control" id="email" placeholder="Email" formControlName="email" />
         <label class="alertLable" *ngIf="RegisterForm.controls['email'].touched">
-            <span *ngIf="RegisterForm.controls['email'].hasError('required')">Please input your Email</span>
-            <span *ngIf="RegisterForm.controls['email'].hasError('pattern')">Please input valid Email</span>
-          </label>
+          <span *ngIf="RegisterForm.controls['email'].hasError('required')">Please input your Email</span>
+          <span *ngIf="RegisterForm.controls['email'].hasError('pattern')">Please input valid Email</span>
+        </label>
       </div>
     </div>
     <div class="form-group row">
-      <label for="mobile" class="col-sm-2 control-label"><strong>Mobile</strong></label>
-      <div class="col-sm-10">
+      <label for="mobile" class="col-sm-3 control-label">
+        <strong>Mobile</strong>
+      </label>
+      <div class="col-sm-9">
         <input type="email" class="form-control" id="mobile" formControlName="mobile" placeholder="Mobile" />
         <label class="alertLable" *ngIf="RegisterForm.controls['mobile'].touched">
-            <span *ngIf="RegisterForm.controls['mobile'].hasError('required')">Please input your mobile number</span>
-            <span *ngIf="RegisterForm.controls['mobile'].hasError('pattern')">Please input valid mobile number</span>
-          </label>
+          <span *ngIf="RegisterForm.controls['mobile'].hasError('required')">Please input your mobile number</span>
+          <span *ngIf="RegisterForm.controls['mobile'].hasError('pattern')">Please input valid mobile number</span>
+        </label>
       </div>
     </div>
     <div class="form-group row">
-      <label for="password" class="col-sm-2 control-label"><strong>Password</strong></label>
-      <div class="col-sm-10">
+      <label for="password" class="col-sm-3 control-label">
+        <strong>Password</strong>
+      </label>
+      <div class="col-sm-9">
         <input type="password" class="form-control" id="password" formControlName="password" placeholder="Password" />
         <label class="alertLable" *ngIf="RegisterForm.controls['password'].touched">
-            <span *ngIf="RegisterForm.controls['password'].hasError('required')">Please input your password</span>
-          </label>
+          <span *ngIf="RegisterForm.controls['password'].hasError('required')">Please input your password</span>
+        </label>
       </div>
     </div>
 
@@ -62,8 +77,8 @@
       <label class="col-sm-2 "></label>
       <div class="col-sm-10">
         <label class="alertLable">
-              <span *ngIf="signinFail">something went wrong please try again</span>
-            </label>
+          <span *ngIf="signinFail">something went wrong please try again</span>
+        </label>
       </div>
     </div>
   </form>

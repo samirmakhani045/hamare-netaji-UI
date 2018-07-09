@@ -8,7 +8,7 @@ import { routes } from './routes';
 import { HeaderComponent } from './common/header/header.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './common/login/login.component';
-import { CollapseModule, ModalModule, RatingModule, TabsModule } from 'ngx-bootstrap';
+import { CollapseModule, ModalModule, RatingModule, TabsModule,TypeaheadModule } from 'ngx-bootstrap';
 import { RegisterComponent } from './common/register/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -37,7 +37,8 @@ import { AuthGuard } from './core/config/auth.guard';
     TabsModule.forRoot(),
     FormsModule,
     ReactiveFormsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    TypeaheadModule.forRoot()
   ],
   providers: [
     {

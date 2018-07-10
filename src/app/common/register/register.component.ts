@@ -13,7 +13,7 @@ import { ToastrService } from 'ngx-toastr';
 export class RegisterComponent implements OnInit {
   RegisterForm: FormGroup;
   signing: boolean = false;
-  signinFail:boolean=false;
+  signinFail:boolean = false;
   constructor(public bsModalRef: BsModalRef,
     private http: HttpClient,
     private formBuilder: FormBuilder,
@@ -38,11 +38,12 @@ export class RegisterComponent implements OnInit {
       Object.keys(RegisterForm.controls).forEach(field => {
         const control = RegisterForm.get(field);
         control.markAsTouched({ onlySelf: true });
-      })
+      });
     } else {
+
       this.signing = true;
       let options =  { };
-      this.http.post('http://139.162.53.4/netaji/client/account/create', RegisterForm.value,options)
+      this.http.post('http://139.162.53.4/netaji/account/create', RegisterForm.value,options)
         .subscribe((res) => {
           this.signing = false;
           this.modalService.hide(1);

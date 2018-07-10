@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
         this.authService.setLoginStatus(true);
       }, error => {
         this.loading = false;
-        this.loginFail=true;
+        this.loginFail= true;
       });
     }
   }

@@ -32,13 +32,13 @@ export class HomeComponent implements OnInit {
   }
   getStatesAsObservable(token: string): Observable<any> {
     this.httpClient.get('http://139.162.53.4/netaji/client/searchProfile?keyword=' + token).subscribe((res) => {
-      if (res["profiles"].length > 0) {
+      if (res['profiles'].length > 0) {
         this.statesComplex = [];
-        for (var i = 0; i < res["profiles"].length; i++) {
-          var temp = {
-            id: res["profiles"][i].id,
-            name: res["profiles"][i].profileDetails.firstName + "  " + res["profiles"][i].profileDetails.lastName
-          }
+        for (let i = 0; i < res['profiles'].length; i++) {
+          let temp = {
+            id: res['profiles'][i].id,
+            name: res['profiles'][i].profileDetails.firstName + '  ' + res['profiles'][i].profileDetails.lastName
+          };
           this.statesComplex.push(temp);
         }
       }
@@ -59,8 +59,10 @@ export class HomeComponent implements OnInit {
 
   typeaheadOnSelect(e: TypeaheadMatch): void {
     console.log('Selected value: ', e);
-    var id = e.item.id
+    let id = e.item.id;
     console.log(id);
     this.router.navigate(['/profile/' + id]);
   }
+
+  searchApi() {}
 }

@@ -8,6 +8,7 @@ import { AboutComponent } from './about/about.component';
 import { PersonalComponent } from './personal/personal.component';
 import { WorkComponent } from './work/work.component';
 import { RatingComponent } from './rating/rating.component';
+import { FormsModule } from '@angular/forms';
 
 const routes: Routes = [
   { path: '', component: ProfileComponent }
@@ -16,8 +17,9 @@ const routes: Routes = [
 @NgModule({
   imports: [
     CommonModule,
+    FormsModule,
     RouterModule.forChild(routes),
-    RatingModule,
+    RatingModule.forRoot(),
     TabsModule
   ],
   declarations: [ProfileComponent, UpdateComponent, AboutComponent, PersonalComponent, WorkComponent, RatingComponent]

@@ -8,14 +8,14 @@ import { routes } from './routes';
 import { HeaderComponent } from './common/header/header.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './common/login/login.component';
-import { CollapseModule, ModalModule, RatingModule, TabsModule,TypeaheadModule } from 'ngx-bootstrap';
+import { CollapseModule, ModalModule,TabsModule,TypeaheadModule } from 'ngx-bootstrap';
 import { RegisterComponent } from './common/register/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import {InterceptorService} from './core/config/interceptor.service';
 import { AuthGuard } from './core/config/auth.guard';
-
+import { RatingModule } from 'ngx-bootstrap/rating';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,13 +30,13 @@ import { AuthGuard } from './core/config/auth.guard';
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(routes),
     RatingModule.forRoot(),
     ModalModule.forRoot(),
     CollapseModule.forRoot(),
-    TabsModule.forRoot(),
-    FormsModule,
-    ReactiveFormsModule,
+    TabsModule.forRoot(),    
     ToastrModule.forRoot(),
     TypeaheadModule.forRoot()
   ],

@@ -5,7 +5,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Profiledetails } from '../model/Profiledetails';
-import { LikeDislikeModel } from '../model/LikeDislikeModel';
+import { LikeDislikeModel, RatingModel, AddRatingModel } from '../model/LikeDislikeModel';
 
 @Component({
   selector: 'app-profile',
@@ -22,6 +22,8 @@ export class ProfileComponent implements OnInit {
   likedislikeModel: any;
   likeCounter: number = 0;
   dislikeCounter: number = 0;
+  ratingModel: any;
+  addRatingModel: any;
   constructor(private modalService: BsModalService,
     private httpClient: HttpClient,
     private activatedRoute: ActivatedRoute,
@@ -29,14 +31,41 @@ export class ProfileComponent implements OnInit {
   ) {
     this.profiledetails = new Profiledetails();
     this.likedislikeModel = new LikeDislikeModel();
+    this.ratingModel = new RatingModel();
+    this.addRatingModel = new AddRatingModel();
   }
 
   ngOnInit() {
+    this.setRatingModel();
     this.getProfile();
   }
 
   selectSection(section) {
     this.selectedSection = section;
+  }
+  addRating() {
+    var sum = this.ratingModel.overallRating + this.ratingModel.personalImage + this.ratingModel.PartyOrganisat + this.ratingModel.qualification
+      + this.ratingModel.honesty + this.ratingModel.accessibility + this.ratingModel.workPerformance + this.ratingModel.transparency;
+    var avg = sum / 8;
+    this.addRatingModel.rating = avg;
+    this.httpClient.post('http://139.162.53.4/netaji/client/addRating', this.addRatingModel)
+      .subscribe((res) => {
+        this.modalService.hide(1);
+        this.getProfile();
+      });
+  }
+  closeRating() {
+    this.modalService.hide(1);
+  }
+  setRatingModel() {
+    this.ratingModel.overallRating = 0;
+    this.ratingModel.personalImage = 0;
+    this.ratingModel.PartyOrganisat = 0;
+    this.ratingModel.qualification = 0;
+    this.ratingModel.honesty = 0;
+    this.ratingModel.accessibility = 0;
+    this.ratingModel.workPerformance = 0;
+    this.ratingModel.transparency = 0;
   }
 
   openModal(template: TemplateRef<any>) {
@@ -46,6 +75,7 @@ export class ProfileComponent implements OnInit {
     this.activatedRoute.params.subscribe((params) => {
       if (params['id']) {
         this.likedislikeModel.profileId = params['id'];
+        this.addRatingModel.profileId = params['id'];
         console.log(this.likedislikeModel);
         this.httpClient.get(`http://139.162.53.4/netaji/admin/getProfiles?id=${params['id']}`)
           .subscribe((res) => {

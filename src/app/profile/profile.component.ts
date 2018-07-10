@@ -14,6 +14,7 @@ import { LikeDislikeModel, RatingModel, AddRatingModel } from '../model/LikeDisl
 })
 export class ProfileComponent implements OnInit {
   max = 5;
+  rateingOfProfile:number=0;
   isReadonly = false;
   modalRef: BsModalRef;
   value = false;
@@ -84,6 +85,7 @@ export class ProfileComponent implements OnInit {
               this.profiledetails = res['profiles'][0].profileDetails;
               this.likeCounter = res['profiles'][0].like;
               this.dislikeCounter = res['profiles'][0].dislike;
+              this.rateingOfProfile=res['profiles'][0].rating;
             }
           });
       }

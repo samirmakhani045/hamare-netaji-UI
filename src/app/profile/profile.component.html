@@ -15,14 +15,14 @@
 
         <div class="vote">
           <span class="highlight">
-            <button class="btn-like">
+            <button class="btn-like"  (click)="likeProfile()" >
               <i class="fa fa-thumbs-up"></i>
             </button>
-            <span class="dislike">0</span>
-            <button class="btn-dislike">
+            <span class="dislike">{{likeCounter}}</span>
+            <button class="btn-dislike" (click)="dislikeProfile()" >
               <i class="fa fa-thumbs-down"></i>
             </button>
-            <span class="dislike" >0</span>
+            <span class="dislike" >{{dislikeCounter}}</span>
           </span>
           <!--<button type="button" class="btn btn-default btn-lg btn-disabled" style="background:white; color:#5C5C5C;">
             <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true" style="color:#278274"></span> 0

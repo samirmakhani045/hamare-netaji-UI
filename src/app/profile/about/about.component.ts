@@ -8,10 +8,12 @@ import { Component, OnInit, Input } from '@angular/core';
 export class AboutComponent implements OnInit {
 
 @Input() profiledetails;
-
+postHelds: any[] = [];
   constructor() { }
 
   ngOnInit() {
+    this.postHelds=this.profiledetails.posHelds;
+
   }
 
 }

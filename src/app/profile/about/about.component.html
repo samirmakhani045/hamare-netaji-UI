@@ -94,8 +94,8 @@
       <tbody>
         <tr *ngFor="let item of postHelds;">
 
-          <td>{{ item.from | date:'MM/dd/yyyy' || 'N/A' }}</td>
-          <td>{{ item.to | date:'MM/dd/yyyy' || 'N/A' }}</td>
+          <td>{{ item.from | date:'MM/dd/yyyy'  }}</td>
+          <td>{{ item.to | date:'MM/dd/yyyy' }}</td>
           <td>{{ item.held || 'N/A' }}</td>
         </tr>
       </tbody>

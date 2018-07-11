@@ -10,7 +10,8 @@ import { mergeMap } from 'rxjs/operators';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
+  
 })
 export class HomeComponent implements OnInit {
   asyncSelected: string;
@@ -18,6 +19,7 @@ export class HomeComponent implements OnInit {
   typeaheadNoResults: boolean;
   dataSource: Observable<any>;
   statesComplex: any[] = [];
+  trendingProfile: any[] = [];
   constructor(private httpClient: HttpClient, private router: Router) {
 
     this.dataSource = Observable.create((observer: any) => {
@@ -25,10 +27,11 @@ export class HomeComponent implements OnInit {
       observer.next(this.asyncSelected);
     })
       .pipe(
-        mergeMap((token: string) => this.getStatesAsObservable(token))
+      mergeMap((token: string) => this.getStatesAsObservable(token))
       );
   }
   ngOnInit() {
+    this.getProfileList();
   }
   getStatesAsObservable(token: string): Observable<any> {
     this.httpClient.get('http://139.162.53.4/netaji/client/searchProfile?keyword=' + token).subscribe((res) => {
@@ -53,6 +56,20 @@ export class HomeComponent implements OnInit {
     );
   }
 
+  getProfileList() {
+    this.httpClient.get('http://139.162.53.4/netaji/admin/getProfiles').subscribe((res) => {
+      
+      if (res && res['profiles'].length) {
+      for(var i=0;i<4;i++)
+        {
+          this.trendingProfile.push(res['profiles'][i])
+        }
+        console.log(this.trendingProfile);
+      }
+    });
+  }
+
+
   changeTypeaheadLoading(e: boolean): void {
     this.typeaheadLoading = e;
   }
@@ -64,5 +81,5 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['/profile/' + id]);
   }
 
-  searchApi() {}
+  searchApi() { }
 }

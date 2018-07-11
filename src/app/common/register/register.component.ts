@@ -3,7 +3,7 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
-
+import{AuthService} from '../../core/service/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -18,6 +18,7 @@ export class RegisterComponent implements OnInit {
     private http: HttpClient,
     private formBuilder: FormBuilder,
     private modalService: BsModalService,
+    private authService: AuthService
   ) { }
 
   ngOnInit() {
@@ -45,6 +46,8 @@ export class RegisterComponent implements OnInit {
       let options =  { };
       this.http.post('http://139.162.53.4/netaji/account/create', RegisterForm.value,options)
         .subscribe((res) => {
+          console.log(res);
+          this.loginAPi();
           this.signing = false;
           this.modalService.hide(1);
         }, err => {
@@ -53,5 +56,16 @@ export class RegisterComponent implements OnInit {
         });
 
     }
+  }
+  loginAPi(){
+    console.log(this.RegisterForm);
+    const url = `http://139.162.53.4/netaji/oauth/token?client_id=finnov&client_secret=finnov&grant_type=password&password=${this.RegisterForm.value.password}&username=${this.RegisterForm.value.email}`;
+    return this.http.get(url).subscribe(result => {
+      window.localStorage.setItem('token', JSON.stringify({ result }));
+      
+      this.authService.setLoginStatus(true);
+    }, error => {
+      
+    });
   }
 }

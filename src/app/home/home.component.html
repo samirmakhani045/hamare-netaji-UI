@@ -10,9 +10,10 @@
     <div class="col-md-8 mt-4">
       <div class="input-group mb-3 pl-4 pr-4">
 
-        <input [(ngModel)]="asyncSelected"  placeholder="Search" aria-label="Recipient's username" [typeahead]="dataSource" (typeaheadLoading)="changeTypeaheadLoading($event)" (typeaheadOnSelect)="typeaheadOnSelect($event)"
-          [typeaheadOptionsLimit]="7"  spellcheck="false" typeaheadOptionField="name"  class="form-control">
-        
+        <input [(ngModel)]="asyncSelected" style="height: 38px" placeholder="Search" aria-label="Recipient's username" [typeahead]="dataSource"
+          (typeaheadLoading)="changeTypeaheadLoading($event)" (typeaheadOnSelect)="typeaheadOnSelect($event)" [typeaheadOptionsLimit]="7"
+          spellcheck="false" typeaheadOptionField="name" class="form-control">
+
         <div class="input-group-append">
           <button class="btn btn-primary" (click)="searchApi()" type="button">
             <i class="fa fa-search"></i>
@@ -35,66 +36,20 @@
       </div>
     </div>
     <div class="row ">
-      <div class="col-md-3 col-xs-12 col-sm-6 col-lg-3 mt-4 removerMargin">
+      <div class="col-md-3 col-xs-12 col-sm-6 col-lg-3 mt-4 removerMargin" *ngFor="let item of trendingProfile;">
         <div class="thumbnail ">
-          <a href="" target="_blank">
+          <a href="profile/{{item.id}}">
             <img src="assets/Images/d.jpg" alt="Narendra Modi" style="width:225px; height:auto;">
           </a>
           <div class="caption text-center">
             <p class="name">
-              <strong>Narendra Modi</strong>
+              <strong>{{item.profileDetails.firstName}}   {{item.profileDetails.lastName}}</strong>
             </p>
-            <p class="heading">Prime Minister of India</p>
-            <p class="title">BJP</p>
+            <p class="heading"> {{item.profileDetails.position}}</p>
+            <p class="title">{{item.profileDetails.organisation}}</p>
           </div>
         </div>
       </div>
-
-      <div class="col-md-3 col-xs-12 col-sm-6 col-lg-3 mt-4 removerMargin">
-        <div class="thumbnail">
-          <a href="" target="_blank">
-            <img src="assets/Images/426.jpg" alt="Mohan Bhagwat" style="width:225px; height:auto;">
-          </a>
-          <div class="caption text-center">
-            <p class="name">
-              <strong>Mohan Bhagwat</strong>
-            </p>
-            <p class="heading">RSS- Chief</p>
-            <p class="title">Gujrat</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-3 col-xs-12 col-sm-6 col-lg-3 mt-4 removerMargin">
-        <div class="thumbnail">
-          <a href="" target="_blank">
-            <img src="assets/Images/s.jpg" alt="Ram Nath Kovind" style="width:225px; height:auto;">
-          </a>
-          <div class="caption text-center">
-            <p class="name">
-              <strong>Ram Nath Kovind</strong>
-            </p>
-            <p class="heading">President of India</p>
-            <p class="title">BJP</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-3 col-xs-12 col-sm-6 col-lg-3 mt-4 removerMargin">
-        <div class="thumbnail">
-          <a href="" target="_blank">
-            <img src="assets/Images/d.jpg" alt="Narendra Modi" style="width:225px; height:auto;">
-          </a>
-          <div class="caption text-center">
-            <p class="name">
-              <strong>Narendra Modi</strong>
-            </p>
-            <p class="heading">Prime Minister of India</p>
-            <p class="title">BJP</p>
-          </div>
-        </div>
-      </div>
-
     </div>
   </div>
 </div>
@@ -124,11 +79,28 @@
         </div>
         <div class="row">
           <div class="embed-responsive embed-responsive-16by9">
-            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/u-7B8eV5OeI?rel=0" allowfullscreen></iframe>
+            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/oGERc5Bo6Xg?rel=0" allowfullscreen></iframe>
           </div>
         </div>
       </div>
-      <div class="col-md-6 col-xs-12 col-sm-6 col-lg-6 setlayout">
+      <div class="col-md-6 col-xs-12 col-sm-6 col-lg-6 border-right setlayout">
+        <div class="row d-flex justify-content-between align-items-center mb-3">
+
+          <span>
+            <strong>INTERVIEW</strong>
+          </span>
+          <span>
+            <strong>View All</strong>
+          </span>
+
+        </div>
+        <div class="row">
+          <div class="embed-responsive embed-responsive-16by9">
+            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/uz2KJUYTeAI?rel=0" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="col-md-6 col-xs-12 col-sm-6 col-lg-6 setlayout">
         <div class="row d-flex justify-content-between align-items-center mb-3">
 
           <span>
@@ -177,7 +149,7 @@
 
 
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
 

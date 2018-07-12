@@ -11,7 +11,7 @@ import { mergeMap } from 'rxjs/operators';
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
-  
+
 })
 export class HomeComponent implements OnInit {
   asyncSelected: string;
@@ -20,6 +20,7 @@ export class HomeComponent implements OnInit {
   dataSource: Observable<any>;
   statesComplex: any[] = [];
   trendingProfile: any[] = [];
+  trendingInterviews: any[] = [];
   constructor(private httpClient: HttpClient, private router: Router) {
 
     this.dataSource = Observable.create((observer: any) => {
@@ -27,11 +28,12 @@ export class HomeComponent implements OnInit {
       observer.next(this.asyncSelected);
     })
       .pipe(
-      mergeMap((token: string) => this.getStatesAsObservable(token))
+        mergeMap((token: string) => this.getStatesAsObservable(token))
       );
   }
   ngOnInit() {
-    this.getProfileList();
+    this.trendingProfilelist();
+    this.trendingInterviewlist();
   }
   getStatesAsObservable(token: string): Observable<any> {
     this.httpClient.get('http://139.162.53.4/netaji/client/searchProfile?keyword=' + token).subscribe((res) => {
@@ -56,12 +58,16 @@ export class HomeComponent implements OnInit {
     );
   }
 
-  getProfileList() {
-    this.httpClient.get('http://139.162.53.4/netaji/admin/getProfiles').subscribe((res) => {
-      
+  trendingInterviewlist() {
+    this.httpClient.get('http://139.162.53.4/netaji/client/getTrendingInterviews').subscribe((res) => {
+      console.log(res);
+    });
+  }
+  trendingProfilelist() {
+    this.httpClient.get('http://139.162.53.4/netaji/client/getTrendingProfiles').subscribe((res) => {
+
       if (res && res['profiles'].length) {
-      for(var i=0;i<4;i++)
-        {
+        for (var i = 0; i < res['profiles'].length; i++) {
           this.trendingProfile.push(res['profiles'][i])
         }
         console.log(this.trendingProfile);

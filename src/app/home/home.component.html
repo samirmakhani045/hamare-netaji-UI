@@ -8,7 +8,7 @@
       <h1 class="text-center">Connecting India to their Leaders</h1>
     </div>
     <div class="col-md-8 mt-4">
-      <div class="input-group mb-3 pl-4 pr-4">
+      <div class="input-group mb-3 pl-4 pr-4 serachBox">
 
         <input [(ngModel)]="asyncSelected" style="height: 38px" placeholder="Search" aria-label="Recipient's username" [typeahead]="dataSource"
           (typeaheadLoading)="changeTypeaheadLoading($event)" (typeaheadOnSelect)="typeaheadOnSelect($event)" [typeaheadOptionsLimit]="7"
@@ -39,7 +39,12 @@
       <div class="col-md-3 col-xs-12 col-sm-6 col-lg-3 mt-4 removerMargin" *ngFor="let item of trendingProfile;">
         <div class="thumbnail ">
           <a href="profile/{{item.id}}">
-            <img src="assets/Images/d.jpg" alt="Narendra Modi" style="width:225px; height:auto;">
+            <div *ngIf="item.profileDetails.profilePic;else other_content">
+              <img src="{{item.profileDetails.profilePic}}" style="width:250px; height:auto;" />
+            </div>
+            <ng-template #other_content>
+              <img src="assets/Images/d.jpg" alt="Narendra Modi" style="width:250px; height:auto;">
+            </ng-template>
           </a>
           <div class="caption text-center">
             <p class="name">

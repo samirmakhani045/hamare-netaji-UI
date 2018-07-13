@@ -64,20 +64,20 @@
   <div class="row">
     <div class="col-md-5">
       <ul class="nav" style="background:#F3F3F3;">
-        <li class="nav-item">
-          <a class="active nav-link" (click)="selectSection('update')">UPDATE</a>
+        <li class="nav-item"  [ngClass]="{'active': selectedSection == 'update'}"  >
+          <a class="nav-link" (click)="selectSection('update')">UPDATE</a>
         </li>
-        <li class="nav-item">
-          <a class="active nav-link" (click)="selectSection('about')">ABOUT</a>
+        <li class="nav-item" [ngClass]="{'active': selectedSection == 'about'}" >
+          <a class=" nav-link"  (click)="selectSection('about')">ABOUT</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" (click)="selectSection('personal')">PERSONAL</a>
+        <li class="nav-item" [ngClass]="{'active': selectedSection == 'personal'}" >
+          <a class="nav-link"  (click)="selectSection('personal')">PERSONAL</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" (click)="selectSection('work')">WORK</a>
+        <li class="nav-item" [ngClass]="{'active': selectedSection == 'work'}">
+          <a class="nav-link"  (click)="selectSection('work')">WORK</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" (click)="selectSection('rating')">RATING</a>
+        <li class="nav-item" [ngClass]="{'active': selectedSection == 'rating'}" >
+          <a class="nav-link"  (click)="selectSection('rating')">RATING</a>
         </li>
       </ul>
     </div>

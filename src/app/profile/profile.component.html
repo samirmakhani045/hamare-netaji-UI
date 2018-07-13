@@ -13,7 +13,7 @@
       <div class="col-md-3">
         <div *ngIf="profiledetails.profilePic;else other_content">
           <!-- <img class="img-responsive img-circle" width="160px" height="160px"  src="{{profiledetails.profilePic}}" style="margin:0 auto"> -->
-          <img src="{{profiledetails.profilePic}}" style="width:225px; height:auto;" />
+          <img src="{{profiledetails.profilePic}}" width="160px" height="160px" />
         </div>
         <ng-template #other_content>
           <img class="img-responsive img-circle" width="160px" height="160px" alt="Leader image" src="assets/Images/x-02.png" style="margin:0 auto">

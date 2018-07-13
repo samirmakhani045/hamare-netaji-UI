@@ -5,6 +5,8 @@ import { Router } from '@angular/router';
 import { TypeaheadMatch } from 'ngx-bootstrap/typeahead';
 import { Observable, of } from 'rxjs';
 import { mergeMap } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
+import { HomeService } from '../core/service/home.service';
 
 
 @Component({
@@ -21,7 +23,7 @@ export class HomeComponent implements OnInit {
   statesComplex: any[] = [];
   trendingProfile: any[] = [];
   trendingInterviews: any[] = [];
-  constructor(private httpClient: HttpClient, private router: Router) {
+  constructor(private httpClient: HttpClient, private router: Router, private homeService: HomeService) {
 
     this.dataSource = Observable.create((observer: any) => {
       // Runs on every search
@@ -36,26 +38,12 @@ export class HomeComponent implements OnInit {
     this.trendingInterviewlist();
   }
   getStatesAsObservable(token: string): Observable<any> {
-    this.httpClient.get('http://139.162.53.4/netaji/client/searchProfile?keyword=' + token).subscribe((res) => {
-      if (res['profiles'].length > 0) {
-        this.statesComplex = [];
-        for (let i = 0; i < res['profiles'].length; i++) {
-          let temp = {
-            id: res['profiles'][i].id,
-            name: res['profiles'][i].profileDetails.firstName + '  ' + res['profiles'][i].profileDetails.lastName
-          };
-          this.statesComplex.push(temp);
-        }
-      }
-    });
 
-    const query = new RegExp(token, 'ig');
+    return this.homeService.getProfileByName(token).pipe
+      (map((response) => {
+        return response.body["profiles"];
+      }));
 
-    return of(
-      this.statesComplex.filter((state: any) => {
-        return query.test(state.name);
-      })
-    );
   }
 
   trendingInterviewlist() {
@@ -86,6 +74,6 @@ export class HomeComponent implements OnInit {
     console.log(id);
     this.router.navigate(['/profile/' + id]);
   }
-
+ 
   searchApi() { }
 }

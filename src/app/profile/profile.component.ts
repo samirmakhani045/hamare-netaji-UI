@@ -6,6 +6,8 @@ import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Profiledetails } from '../model/Profiledetails';
 import { LikeDislikeModel, RatingModel, AddRatingModel } from '../model/LikeDislikeModel';
+import { AuthService } from '../core/service/auth.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-profile',
@@ -14,7 +16,7 @@ import { LikeDislikeModel, RatingModel, AddRatingModel } from '../model/LikeDisl
 })
 export class ProfileComponent implements OnInit {
   max = 5;
-  rateingOfProfile:number=0;
+  rateingOfProfile: number = 0;
   isReadonly = false;
   modalRef: BsModalRef;
   value = false;
@@ -25,18 +27,29 @@ export class ProfileComponent implements OnInit {
   dislikeCounter: number = 0;
   ratingModel: any;
   addRatingModel: any;
+  subscription: Subscription;
+  message: any;
   constructor(private modalService: BsModalService,
     private httpClient: HttpClient,
     private activatedRoute: ActivatedRoute,
     private toastrService: ToastrService,
+    private authService: AuthService
   ) {
     this.profiledetails = new Profiledetails();
     this.likedislikeModel = new LikeDislikeModel();
     this.ratingModel = new RatingModel();
     this.addRatingModel = new AddRatingModel();
+    this.subscription = this.authService.getLoginStatus().subscribe(message => { this.message = message; });
   }
 
   ngOnInit() {
+    const authToken = JSON.parse(window.localStorage.getItem('token'));
+    if (authToken != null &&  authToken['result']['access_token']) {
+        // logged in so return true
+        this.authService.setLoginStatus(true);
+    }else{
+      this.authService.setLoginStatus(false);
+    }
     this.setRatingModel();
     this.getProfile();
   }
@@ -85,23 +98,37 @@ export class ProfileComponent implements OnInit {
               this.profiledetails = res['profiles'][0].profileDetails;
               this.likeCounter = res['profiles'][0].like;
               this.dislikeCounter = res['profiles'][0].dislike;
-              this.rateingOfProfile=res['profiles'][0].rating;
+              this.rateingOfProfile = res['profiles'][0].rating;
             }
           });
       }
     });
   }
+  ngOnDestroy() {
+    // unsubscribe to ensure no memory leaks
+    this.subscription.unsubscribe();
+  }
   likeProfile() {
-    console.log("Like Profile");
-    this.likedislikeModel.like = true;
-    this.likedislikeModel.dislike = false;
-    this.CallAPiLikeDislike();
+
+   
+    if (this.message.text) {
+      console.log("Like Profile");
+      this.likedislikeModel.like = true;
+      this.likedislikeModel.dislike = false;
+      this.CallAPiLikeDislike();
+    }else{
+      alert("you need to login");
+    }
+
   }
   dislikeProfile() {
-    console.log("Dis Like Profile")
-    this.likedislikeModel.dislike = true;
-    this.likedislikeModel.like = false;
-    this.CallAPiLikeDislike();
+    if (this.message.text) {
+      this.likedislikeModel.dislike = true;
+      this.likedislikeModel.like = false;
+      this.CallAPiLikeDislike();
+    }else{
+      alert("you need to login");
+    }
   }
 
   CallAPiLikeDislike() {

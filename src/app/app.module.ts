@@ -16,6 +16,7 @@ import { ToastrModule } from 'ngx-toastr';
 import {InterceptorService} from './core/config/interceptor.service';
 import { AuthGuard } from './core/config/auth.guard';
 import { RatingModule } from 'ngx-bootstrap/rating';
+import { HomeService } from './core/service/home.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,6 +48,7 @@ import { RatingModule } from 'ngx-bootstrap/rating';
       multi: true
     },
     AuthGuard,
+    HomeService
   ],
   bootstrap: [AppComponent],
   entryComponents: [

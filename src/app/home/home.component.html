@@ -10,9 +10,9 @@
     <div class="col-md-8 mt-4">
       <div class="input-group mb-3 pl-4 pr-4 serachBox">
 
-        <input [(ngModel)]="asyncSelected" style="height: 38px" placeholder="Search" aria-label="Recipient's username" [typeahead]="dataSource"
+        <input [(ngModel)]="asyncSelected" style="height: 38px" placeholder="Search"  [typeahead]="dataSource"
           (typeaheadLoading)="changeTypeaheadLoading($event)"  typeaheadWaitMs="1000" (typeaheadOnSelect)="typeaheadOnSelect($event)" [typeaheadOptionsLimit]="7"
-          spellcheck="false" typeaheadOptionField="name" class="form-control">
+          spellcheck="false" typeaheadOptionField="profileDetails.firstName"  class="form-control">
 
         <div class="input-group-append">
           <button class="btn btn-primary" (click)="searchApi()" type="button">
@@ -78,7 +78,7 @@
             <strong>INTERVIEW</strong>
           </span>
           <span>
-            <strong>View All</strong>
+           
           </span>
 
         </div>
@@ -95,7 +95,7 @@
             <strong>INTERVIEW</strong>
           </span>
           <span>
-            <strong>View All</strong>
+           
           </span>
 
         </div>
